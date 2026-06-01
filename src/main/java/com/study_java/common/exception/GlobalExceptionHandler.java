@@ -36,7 +36,6 @@ public class GlobalExceptionHandler {
                 ));
     }
 
-
     @ExceptionHandler(NoHandlerFoundException.class)
     public ResponseEntity<ApiErrorResponse> handleNotFound(
             NoHandlerFoundException ex
