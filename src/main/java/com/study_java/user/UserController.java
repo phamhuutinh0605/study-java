@@ -1,0 +1,49 @@
+package com.study_java.user;
+
+import com.study_java.common.dto.ApiSuccessResponse;
+import com.study_java.user.dto.CreateUserRequest;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/users")
+public class UserController {
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping
+    public ApiSuccessResponse<List<User>> findAll() {
+        return new ApiSuccessResponse<>(
+                200,
+                "Get users successful",
+                userService.findAll()
+        );
+    }
+
+    @GetMapping("/{id}")
+    public ApiSuccessResponse<User> findById(@PathVariable String id) {
+        return new ApiSuccessResponse<>(
+                200,
+                "Get user successful",
+                userService.findById(id)
+        );
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public ApiSuccessResponse<User> create(
+            @Valid @RequestBody CreateUserRequest request
+    ) {
+        return new ApiSuccessResponse<>(
+                201,
+                "Create user successful",
+                userService.create(request)
+        );
+    }
+}
