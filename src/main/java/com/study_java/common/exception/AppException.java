@@ -31,6 +31,7 @@ public class AppException extends RuntimeException {
     }
 
     public Object getErrors() {
+        System.out.println("errors: " + errors);
         return errors;
     }
 }

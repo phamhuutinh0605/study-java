@@ -22,7 +22,7 @@ public class UserService {
     }
 
     public User findById(String id) {
-        return userRepository.findById(id).orElse(null);
+        return userRepository.findById(id).orElseThrow(() -> new AppException(HttpStatus.NOT_FOUND, "User not found"));
     }
 
     public User create(CreateUserRequest request) {

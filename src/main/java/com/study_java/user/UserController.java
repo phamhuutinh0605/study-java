@@ -20,10 +20,17 @@ public class UserController {
 
     @GetMapping
     public ApiSuccessResponse<List<User>> findAll() {
+        List<User> mockUsers = List.of(
+                new User("1", "Ashton", "ashton@gmail.com"),
+                new User("2", "John", "john@gmail.com"),
+                new User("3", "Jane", "jane@gmail.com"),
+                new User("4","Tình","tinh@gmail.com")
+        );
+
         return new ApiSuccessResponse<>(
                 200,
                 "Get users successful",
-                userService.findAll()
+                 userService.findAll()
         );
     }
 
