@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Play, Info, Star, Volume2, VolumeX, Flame } from 'lucide-react';
+import { Flame, Info, Play, Star, Volume2, VolumeX } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
 import type { Movie } from '../types/movie';
 import { AppIcon } from './AppIcon';
 
@@ -15,6 +15,25 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
   onMoreInfo,
 }) => {
   const [isMuted, setIsMuted] = useState(true);
+  const [isVideoReady, setIsVideoReady] = useState(false);
+
+  // Disable browser OS media session overlay and reset video ready state
+  useEffect(() => {
+    setIsVideoReady(false);
+    if ('mediaSession' in navigator) {
+      try {
+        navigator.mediaSession.metadata = null;
+        navigator.mediaSession.setActionHandler('play', null);
+        navigator.mediaSession.setActionHandler('pause', null);
+        navigator.mediaSession.setActionHandler('previoustrack', null);
+        navigator.mediaSession.setActionHandler('nexttrack', null);
+        navigator.mediaSession.setActionHandler('seekbackward', null);
+        navigator.mediaSession.setActionHandler('seekforward', null);
+      } catch (e) {
+        // Ignore browser restriction errors
+      }
+    }
+  }, [movie?.id]);
 
   if (!movie) {
     return (
@@ -22,11 +41,56 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
     );
   }
 
+  // Convert trailerUrl into background video embed link with autoplay & loop
+  const getHeroEmbedUrl = (url: string, muted: boolean) => {
+    if (!url) return '';
+    const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+    const videoId = match ? match[1] : null;
+    if (!videoId) return url;
+    const muteParam = muted ? '1' : '0';
+    return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=${muteParam}&controls=0&loop=1&playlist=${videoId}&playsinline=1&enablejsapi=1&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&fs=0&cc_load_policy=0&autohide=1`;
+  };
+
+  const isDirectVideo = movie.trailerUrl?.endsWith('.mp4') || movie.trailerUrl?.endsWith('.webm');
+  const embedUrl = getHeroEmbedUrl(movie.trailerUrl, isMuted);
+
   return (
     <div
       className="hero-wrapper"
       style={{ backgroundImage: `url(${movie.bannerUrl || movie.posterUrl})` }}
     >
+      {/* Background Video Streaming Element */}
+      {movie.trailerUrl && (
+        <div className="hero-video-wrapper">
+          {isDirectVideo ? (
+           <video
+            key={movie.id}
+            src={movie.trailerUrl}
+            autoPlay
+            loop
+            muted={isMuted}
+            playsInline
+            disablePictureInPicture
+            disableRemotePlayback
+            controls={false}
+            controlsList="nodownload nofullscreen noremoteplayback"
+            onCanPlay={() => setIsVideoReady(true)}
+            onPlay={() => setIsVideoReady(true)}
+            className={`hero-video-element ${isVideoReady ? 'loaded' : 'loading'}`}
+           />
+          ) : (
+            <iframe
+              key={movie.id}
+              src={embedUrl}
+              title={movie.title}
+              onLoad={() => setIsVideoReady(true)}
+              className={`hero-video-iframe ${isVideoReady ? 'loaded' : 'loading'}`}
+              allow="autoplay; encrypted-media"
+            />
+          )}
+        </div>
+      )}
+
       {/* Dark Overlay Gradient */}
       <div className="hero-gradient hero-overlay-absolute" />
 

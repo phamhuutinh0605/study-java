@@ -1,7 +1,6 @@
 /* MovieCard & Sub-components Styles */
 .movie-card-container {
   display: flex;
-  align-items: center;
   position: relative;
   flex: 0 0 auto;
 }
@@ -34,7 +33,7 @@
 }
 
 .movie-card-inner.ranked {
-  width: 210px;
+  width: 230px;
 }
 
 .movie-card-body {

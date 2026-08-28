@@ -1,4 +1,5 @@
 import React from 'react';
+import { Flashlight, Lightbulb, Sparkles } from 'lucide-react';
 
 interface LogoProps {
   size?: 'sm' | 'md' | 'lg';
@@ -22,6 +23,35 @@ export const Logo: React.FC<LogoProps> = ({ size = 'md', onClick, className = ''
       className={`netflix-curved-logo ${onClick ? 'clickable' : ''} ${className}`}
       title="Netflix"
     >
+      {/* Orbiting Spotlight Flashlights & Lightbulb Overlay on Hover */}
+      <div className="logo-spotlight-overlay" aria-hidden="true">
+        <div className="logo-orbit-ring">
+          {/* Top-Left Flashlight */}
+          <div className="logo-orbit-item item-flashlight-1">
+            <div className="logo-beam beam-flashlight" />
+            <Flashlight className="logo-icon icon-flashlight" size={16} />
+          </div>
+
+          {/* Bottom-Right Lightbulb */}
+          <div className="logo-orbit-item item-bulb">
+            <div className="logo-beam beam-bulb" />
+            <Lightbulb className="logo-icon icon-bulb" size={16} />
+          </div>
+
+          {/* Top-Right Flashlight */}
+          <div className="logo-orbit-item item-flashlight-2">
+            <div className="logo-beam beam-flashlight-2" />
+            <Flashlight className="logo-icon icon-flashlight" size={16} />
+          </div>
+
+          {/* Bottom-Left Sparkles */}
+          <div className="logo-orbit-item item-sparkles">
+            <div className="logo-beam beam-sparkles" />
+            <Sparkles className="logo-icon icon-sparkles" size={14} />
+          </div>
+        </div>
+      </div>
+
       <svg
         width={width}
         height={height}
@@ -60,3 +90,4 @@ export const Logo: React.FC<LogoProps> = ({ size = 'md', onClick, className = ''
     </div>
   );
 };
+
