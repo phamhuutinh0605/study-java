@@ -47,7 +47,7 @@ export const Logo: React.FC<LogoProps> = ({ size = 'md', onClick, className = ''
           {/* Bottom-Left Sparkles */}
           <div className="logo-orbit-item item-sparkles">
             <div className="logo-beam beam-sparkles" />
-            <Sparkles className="logo-icon icon-sparkles" size={14} />
+            <Lightbulb className="logo-icon icon-sparkles" size={14} />
           </div>
         </div>
       </div>
