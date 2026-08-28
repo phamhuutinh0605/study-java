@@ -1,0 +1,221 @@
+/* HeroBanner Component Styles */
+.hero-wrapper {
+  position: relative;
+  height: 82vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center top;
+  display: flex;
+  align-items: flex-end;
+  transition: background-image 0.5s ease-in-out;
+}
+
+.hero-skeleton {
+  height: 78vh;
+  width: 100%;
+}
+
+.hero-overlay-absolute {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-gradient {
+  background: 
+    radial-gradient(circle at 70% 30%, transparent 20%, rgba(13, 13, 18, 0.8) 70%),
+    linear-gradient(77deg, rgba(13, 13, 18, 0.95) 0%, rgba(13, 13, 18, 0.75) 45%, rgba(13, 13, 18, 0.1) 100%),
+    linear-gradient(180deg, rgba(13, 13, 18, 0) 50%, rgba(13, 13, 18, 1) 100%);
+}
+
+.hero-content-inner {
+  position: relative;
+  z-index: 10;
+  padding: 0 3.5rem 5rem 3.5rem;
+  max-width: 850px;
+}
+
+.netflix-badge {
+  background: linear-gradient(135deg, #E50914 0%, #B80710 100%);
+  color: white;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 10px rgba(229, 9, 20, 0.4);
+}
+
+.hero-badge-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-top-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--netflix-red-glow);
+  border: 1px solid var(--netflix-red);
+  padding: 3px 10px;
+  border-radius: 4px;
+  color: #FFF;
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  box-shadow: 0 0 12px var(--netflix-red-glow);
+}
+
+.hero-star-box {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #FFD700;
+  margin-left: 0.3rem;
+}
+
+.hero-star-score {
+  font-weight: 800;
+  color: #FFF;
+}
+
+.hero-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.spec-pill {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #DDD;
+}
+
+.spec-pill.blue {
+  border-color: rgba(56, 189, 248, 0.4);
+  color: #38bdf8;
+}
+
+.spec-pill.purple {
+  border-color: rgba(168, 85, 247, 0.4);
+  color: #c084fc;
+}
+
+.hero-title {
+  font-size: 3.8rem;
+  font-weight: 900;
+  line-height: 1.05;
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.8);
+  letter-spacing: -0.5px;
+}
+
+.hero-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+  color: #DDD;
+  flex-wrap: wrap;
+}
+
+.hero-description {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: #CCC;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-width: 700px;
+}
+
+.hero-btn-primary {
+  display: flex;
+  align-items: center;
+  gap: 0.69rem;
+  background-color: #FFFFFF;
+  color: #000000;
+  border: none;
+  padding: 0.8rem 2.2rem;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 20px rgba(255,255,255,0.3);
+  font-family: inherit;
+}
+
+.hero-btn-primary:hover {
+  background-color: rgba(255,255,255,0.85);
+  transform: scale(1.03);
+}
+
+.hero-btn-secondary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: rgba(109, 109, 110, 0.45);
+  color: #FFFFFF;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 0.8rem 2rem;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: all 0.25s ease;
+  font-family: inherit;
+}
+
+.hero-btn-secondary:hover {
+  background-color: rgba(109, 109, 110, 0.7);
+  transform: scale(1.03);
+}
+
+.hero-bottom-controls {
+  position: absolute;
+  right: 3.5rem;
+  bottom: 5rem;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero-sound-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+
+.hero-age-tag {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-left: 3px solid var(--netflix-red);
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #DDD;
+  backdrop-filter: blur(8px);
+}

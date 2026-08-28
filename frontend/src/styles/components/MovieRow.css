@@ -1,0 +1,80 @@
+/* MovieRow Component Styles */
+.movie-row-wrapper {
+  margin-bottom: 3rem;
+  padding: 0 3.5rem;
+  position: relative;
+}
+
+.row-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.row-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #F3F4F6;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  letter-spacing: -0.3px;
+}
+
+.row-explore-text {
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.row-slider-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.row-chevron-btn {
+  position: absolute;
+  z-index: 40;
+  width: 44px;
+  height: 160px;
+  background-color: rgba(13, 13, 18, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.row-chevron-btn.left {
+  left: -2.2rem;
+  border-radius: 8px 0 0 8px;
+}
+
+.row-chevron-btn.right {
+  right: -2.2rem;
+  border-radius: 0 8px 8px 0;
+}
+
+.row-chevron-btn:hover {
+  background-color: var(--netflix-red);
+  border-color: var(--netflix-red);
+}
+
+.row-movie-list {
+  display: flex;
+  gap: 1.2rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 0.75rem 0;
+  width: 100%;
+}
+
+.row-movie-list.top10 {
+  gap: 2rem;
+}

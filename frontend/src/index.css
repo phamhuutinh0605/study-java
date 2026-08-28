@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+
+@import './styles/variables.css';
+@import './styles/components/Logo.css';
+@import './styles/components/Navbar.css';
+@import './styles/components/CategoryBar.css';
+@import './styles/components/HeroBanner.css';
+@import './styles/components/MovieRow.css';
+@import './styles/components/MovieCard.css';
+@import './styles/components/MovieModal.css';
+@import './styles/components/SurpriseModal.css';
+@import './styles/components/ThemeSwitcher.css';
+@import './styles/components/Toast.css';
+@import './styles/components/Footer.css';
+@import './styles/components/App.css';

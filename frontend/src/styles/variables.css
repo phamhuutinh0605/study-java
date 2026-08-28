@@ -1,0 +1,251 @@
+:root, [data-theme="red"] {
+  --netflix-red: #E50914;
+  --netflix-red-hover: #F40612;
+  --netflix-red-glow: rgba(229, 9, 20, 0.4);
+  --netflix-black: #0D0D12;
+  --netflix-dark: #12121A;
+  --netflix-card: #1B1B26;
+  --netflix-card-hover: #242433;
+  --netflix-text: #FFFFFF;
+  --netflix-gray: #A3A3B3;
+  --netflix-border: rgba(255, 255, 255, 0.12);
+  --netflix-glass-bg: rgba(18, 18, 26, 0.75);
+  --netflix-glass-border: rgba(255, 255, 255, 0.15);
+  --font-family: 'Outfit', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+[data-theme="violet"] {
+  --netflix-red: #8B5CF6;
+  --netflix-red-hover: #A78BFA;
+  --netflix-red-glow: rgba(139, 92, 246, 0.45);
+  --netflix-black: #0B091A;
+  --netflix-dark: #120E29;
+  --netflix-card: #1B153D;
+  --netflix-card-hover: #271E57;
+  --netflix-glass-bg: rgba(27, 21, 61, 0.75);
+}
+
+[data-theme="emerald"] {
+  --netflix-red: #10B981;
+  --netflix-red-hover: #34D399;
+  --netflix-red-glow: rgba(16, 185, 129, 0.45);
+  --netflix-black: #061614;
+  --netflix-dark: #0A2420;
+  --netflix-card: #10332D;
+  --netflix-card-hover: #174A42;
+  --netflix-glass-bg: rgba(16, 51, 45, 0.75);
+}
+
+[data-theme="gold"] {
+  --netflix-red: #F59E0B;
+  --netflix-red-hover: #FBBF24;
+  --netflix-red-glow: rgba(245, 158, 11, 0.45);
+  --netflix-black: #120F0B;
+  --netflix-dark: #1F1912;
+  --netflix-card: #2B2319;
+  --netflix-card-hover: #3D3123;
+  --netflix-glass-bg: rgba(43, 35, 25, 0.75);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--netflix-black);
+  color: var(--netflix-text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: 
+    radial-gradient(circle at 15% 20%, rgba(229, 9, 20, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 60%, rgba(120, 30, 200, 0.05) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--netflix-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A2A3A;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--netflix-red);
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(229, 9, 20, 0.4); }
+  50% { box-shadow: 0 0 25px rgba(229, 9, 20, 0.8); }
+}
+
+.glow-pulse {
+  animation: pulseGlow 2.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #181824 25%, #262638 50%, #181824 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite ease-in-out;
+  border-radius: 6px;
+}
+
+/* Flex & Utility Helpers */
+.flex-row { display: flex; flex-direction: row; }
+.flex-col { display: flex; flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.relative { position: relative; }
+.absolute { position: absolute; }
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.object-cover { object-fit: cover; }
+.pointer { cursor: pointer; }
+.text-muted { color: var(--netflix-gray); }
+.text-match { color: #46d369; font-weight: 700; }
+
+/* ==========================================================================
+   Icon Design System & Glowing Badges
+   ========================================================================== */
+.icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+}
+
+.icon-badge:hover {
+  transform: translateY(-2px) scale(1.06);
+  cursor: pointer;
+}
+
+.icon-badge-xs {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+}
+
+.icon-badge-sm {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+}
+
+.icon-badge-md {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+}
+
+.icon-badge-lg {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+}
+
+.icon-badge-xl {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+}
+
+.icon-badge-gold {
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.22) 0%, rgba(245, 158, 11, 0.08) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.45);
+  color: #FBBF24;
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.25);
+}
+
+.icon-badge-orange {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.22) 0%, rgba(234, 88, 12, 0.08) 100%);
+  border: 1px solid rgba(249, 115, 22, 0.45);
+  color: #FB923C;
+  box-shadow: 0 0 16px rgba(249, 115, 22, 0.25);
+}
+
+.icon-badge-blue {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.22) 0%, rgba(59, 130, 246, 0.08) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  color: #38BDF8;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.25);
+}
+
+.icon-badge-red {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.22) 0%, rgba(225, 29, 72, 0.08) 100%);
+  border: 1px solid rgba(239, 68, 68, 0.45);
+  color: #EF4444;
+  box-shadow: 0 0 16px rgba(225, 29, 72, 0.25);
+}
+
+.icon-badge-purple {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.22) 0%, rgba(147, 51, 234, 0.08) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.45);
+  color: #C084FC;
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.25);
+}
+
+.icon-badge-emerald {
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.22) 0%, rgba(16, 185, 129, 0.08) 100%);
+  border: 1px solid rgba(52, 211, 153, 0.45);
+  color: #34D399;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.25);
+}
+
+.icon-badge-glass {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #FFFFFF;
+  backdrop-filter: blur(10px);
+}
+
+.icon-badge-glass:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.icon-badge-theme {
+  background: linear-gradient(135deg, var(--netflix-red-glow) 0%, rgba(0, 0, 0, 0.3) 100%);
+  border: 1px solid var(--netflix-red);
+  color: var(--netflix-red);
+  box-shadow: 0 0 16px var(--netflix-red-glow);
+}

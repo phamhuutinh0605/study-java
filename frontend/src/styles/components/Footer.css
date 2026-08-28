@@ -1,0 +1,60 @@
+/* Footer Component Styles */
+.footer-wrapper {
+  background-color: var(--netflix-black);
+  border-top: 1px solid var(--netflix-border);
+  color: var(--netflix-gray);
+  padding: 4rem 3rem 2.5rem 3rem;
+  margin-top: 5rem;
+  font-size: 0.85rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.footer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.footer-logo-box {
+  margin-bottom: 1rem;
+}
+
+.footer-icons-row {
+  display: flex;
+  gap: 1rem;
+  color: #BBB;
+}
+
+.footer-col-title {
+  color: #DDD;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.footer-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-tech-info {
+  font-size: 0.75rem;
+  color: #555;
+}
